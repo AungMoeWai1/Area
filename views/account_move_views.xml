@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_account_move_form_inherit_area" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.area</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Add new column of Discount Amount in the invoice line tree after Tax field -->
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                <field name="area_id" string="Area"/>
+            </xpath>
+            <xpath expr="//button[@name='action_post'][1]" position="attributes">
+                <attribute name="groups">area.group_area_based_access,account.group_account_invoice</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_post'][2]" position="attributes">
+                <attribute name="groups">area.group_area_based_access,account.group_account_invoice</attribute>
+            </xpath>
+        </field>
+    </record>
+    <!-- For the Tree view to show the area -->
+    <record id="view_account_move_invoice_tree_inherit_area" model="ir.ui.view">
+        <field name="name">account.out.invoice.list.inherit.area</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date']" position="before">
+                <field name="area_id" string="Area" groups="area.group_area_based_access"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

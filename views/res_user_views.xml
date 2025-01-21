@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record id="view_res_user_form_inherit_area" model="ir.ui.view">
+            <field name="name">res.user.form.inherit.area</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <!-- Correct XPath to insert before "groups_id" -->
+                <xpath expr="//notebook/page[@name='access_rights']/group" position="before">
+                    <group string="Multi Location">
+                        <field string="Allowed Areas" name="area_ids" widget="many2many_tags" options="{'color_field': 'color'}" style="display: inline;"/>
+                        <field string="Current Area" name="area_id"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_res_user_tree_inherit_area" model="ir.ui.view">
+            <field name="name">res.user.tree.inherit.area</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='login_date']" position="after">
+                    <field name="area_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

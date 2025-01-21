@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_user,res.user user,model_res_area,base.group_user,1,1,1,0
+
+access_account_journal_invoice,account.journal invoice,account.model_account_journal,area.group_area_based_access,1,1,1,0
+access_account_move,account.move access,account.model_account_move,area.group_area_based_access,1,1,1,0
+access_account_account_invoice,account.account invoice,account.model_account_account,area.group_area_based_access,1,0,0,0
+access_account_move_line,account.move.line access,account.model_account_move_line,area.group_area_based_access,1,1,0,0
+
+access_account_move_on_area,account.move,account.model_account_move,purchase.group_purchase_user,1,1,1,0

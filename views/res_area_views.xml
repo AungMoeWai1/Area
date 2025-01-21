@@ -1,0 +1,52 @@
+<odoo>
+
+    <data>
+        <!-- Action for the New Menu -->
+        <record id="action_area" model="ir.actions.act_window">
+            <field name="name">Areas</field>
+            <field name="res_model">res.area</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{'search_default_my_quotation': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Areas are not created! Let create Now...
+                </p>
+            </field>
+        </record>
+        <record id="view_area_form" model="ir.ui.view">
+            <field name="name">res.area.form</field>
+            <field name="model">res.area</field>
+            <field name="arch" type="xml">
+                <form string="Area" duplicate="0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="e.g. Yangon"/>
+                            </h1>
+                        </div>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_area_tree" model="ir.ui.view">
+            <field name="name">res.area.list</field>
+            <field name="model">res.area</field>
+            <field name="arch" type="xml">
+                <list string="Areas">
+                    <field name="name"/>
+                </list>
+            </field>
+        </record>
+
+    </data>
+
+    <!-- Menu Item under Users &amp; Companies in the setting -->
+<!--    <menuitem id="menu_area"-->
+<!--              name="Areas"-->
+<!--              parent="base.menu_users"-->
+<!--              sequence="2"-->
+<!--              action="area.action_area"/>-->
+
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!-- Security Group for Area-Based Access -->
+        <record id="group_area_based_access" model="res.groups">
+            <field name="name">Area-Based Access</field>
+            <field name="category_id" ref="base.module_category_accounting_accounting"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <!-- Reposition for reaonly group upon the group_area_based_access -->
+        <record id="account.group_account_readonly" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('area.group_area_based_access'))]"/>
+        </record>
+        <record id="account.group_account_invoice" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('area.group_area_based_access'))]"/>
+        </record>
+    </data>
+</odoo>
+

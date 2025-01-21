@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--Adding the res_area menu under the configuration of account app -->
+    <menuitem id="menu_account_config_Location" name="Location" parent="account.menu_finance_configuration"
+              groups="base.group_user"
+              sequence="7">
+        <menuitem id="menu_action_area_form" action="area.action_area" sequence="1"/>
+    </menuitem>
+
+    <!-- Assign the new group to the root Accounting menu -->http://localhost:8069/odoo/users/9
+    <record id="accountant.menu_accounting" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('area.group_area_based_access'))]"/>
+    </record>
+
+
+    <!-- From customer menu
+     Modify to show menuitems -->
+    <record id="account.menu_action_move_out_invoice_type" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('area.group_area_based_access'))]"/>
+    </record>
+
+
+    <!-- Hide the other menu items by specifying their groups -->
+    <record id="account.menu_action_move_out_refund_type" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_readonly')),(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+
+    <record id="account.product_product_menu_sellable" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_readonly')),(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+    <record id="account.menu_account_customer" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_readonly')),(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+    <!-- From vendors menu
+     Modify to Show menuitems -->
+    <record id="account.menu_action_move_in_invoice_type" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('area.group_area_based_access'))]"/>
+    </record>
+
+
+    <!-- Hide the other menu items by specifying their groups -->
+    <record id="account.menu_action_move_in_refund_type" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_readonly')),(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+
+    <record id="account.product_product_menu_purchasable" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_readonly')),(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+    <record id="account.menu_account_supplier" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('account.group_account_readonly')),(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+
+</odoo>
